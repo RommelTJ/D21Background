@@ -46,6 +46,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.myTimerEnableSwitch.on = NO;
+    self.myBackgroundEnableSwitch.on = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,9 +58,25 @@
 //We did this because we want to dynamically respond when someone
 // changes the switch.
 - (IBAction)doTimerEnableSwitch:(id)sender {
+    UISwitch *mySwitch = sender;
+    if (mySwitch.on) {
+        self.myTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(doTimer:) userInfo:nil repeats:YES];
+    } else {
+        [self.myTimer invalidate];
+        self.myTimer = nil;
+    }
 }
 
 - (IBAction)doBackgroundEnableSwitch:(id)sender {
+    
+}
+
+- (void)doTimer:(NSTimer *) timer {
+    self.myTimerCount++;
+    //By using '_' you are going directly to the value instead of using self.myTimerCount (which is calling a getter).
+    self.myTimerCountLabel.text = [NSString stringWithFormat:@"Count = %i", _myTimerCount];
+    NSLog(@"Count = %i", self.myTimerCount); //This is the official way.
+    [self displayApplicationState];
 }
 
 @end
