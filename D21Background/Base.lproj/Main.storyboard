@@ -21,6 +21,9 @@
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDp-VE-biG">
                                         <rect key="frame" x="8" y="8" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="doTimerEnableSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="P07-v1-6kX"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kow-Kf-zjy">
                                         <rect key="frame" x="73" y="13" width="44" height="21"/>
@@ -30,6 +33,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3b-Va-tp5">
                                         <rect key="frame" x="8" y="47" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="doBackgroundEnableSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="fIZ-qR-VR2"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Processing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9e8-eu-U5Q">
                                         <rect key="frame" x="73" y="52" width="184" height="21"/>
@@ -49,6 +55,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="myBackgroundEnableSwitch" destination="C3b-Va-tp5" id="uqD-Gc-xId"/>
+                        <outlet property="myTimerCountLabel" destination="7ab-m6-4YU" id="j7b-Ra-xGo"/>
+                        <outlet property="myTimerEnableSwitch" destination="ZDp-VE-biG" id="5q1-kb-plG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
