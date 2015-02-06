@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7764B3D71A8478ED00F2D750 /* fight-torreros-full.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7764B3D61A8478ED00F2D750 /* fight-torreros-full.mp3 */; };
 		77DD3E771A8457CB00C3D299 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E761A8457CB00C3D299 /* main.m */; };
 		77DD3E7A1A8457CB00C3D299 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E791A8457CB00C3D299 /* AppDelegate.m */; };
 		77DD3E7D1A8457CB00C3D299 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E7C1A8457CB00C3D299 /* ViewController.m */; };
@@ -14,6 +15,7 @@
 		77DD3E821A8457CB00C3D299 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DD3E811A8457CB00C3D299 /* Images.xcassets */; };
 		77DD3E851A8457CB00C3D299 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77DD3E831A8457CB00C3D299 /* LaunchScreen.xib */; };
 		77DD3E911A8457CB00C3D299 /* D21BackgroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E901A8457CB00C3D299 /* D21BackgroundTests.m */; };
+		77DD3E9C1A84757F00C3D299 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E9B1A84757F00C3D299 /* SwiftViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7764B3D61A8478ED00F2D750 /* fight-torreros-full.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "fight-torreros-full.mp3"; sourceTree = "<group>"; };
 		77DD3E711A8457CB00C3D299 /* D21Background.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D21Background.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DD3E751A8457CB00C3D299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DD3E761A8457CB00C3D299 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +43,8 @@
 		77DD3E8A1A8457CB00C3D299 /* D21BackgroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = D21BackgroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DD3E8F1A8457CB00C3D299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DD3E901A8457CB00C3D299 /* D21BackgroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = D21BackgroundTests.m; sourceTree = "<group>"; };
+		77DD3E9A1A84757F00C3D299 /* D21Background-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "D21Background-Bridging-Header.h"; sourceTree = "<group>"; };
+		77DD3E9B1A84757F00C3D299 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +87,16 @@
 			isa = PBXGroup;
 			children = (
 				77DD3E781A8457CB00C3D299 /* AppDelegate.h */,
+				7764B3D61A8478ED00F2D750 /* fight-torreros-full.mp3 */,
 				77DD3E791A8457CB00C3D299 /* AppDelegate.m */,
 				77DD3E7B1A8457CB00C3D299 /* ViewController.h */,
 				77DD3E7C1A8457CB00C3D299 /* ViewController.m */,
+				77DD3E9B1A84757F00C3D299 /* SwiftViewController.swift */,
 				77DD3E7E1A8457CB00C3D299 /* Main.storyboard */,
 				77DD3E811A8457CB00C3D299 /* Images.xcassets */,
 				77DD3E831A8457CB00C3D299 /* LaunchScreen.xib */,
 				77DD3E741A8457CB00C3D299 /* Supporting Files */,
+				77DD3E9A1A84757F00C3D299 /* D21Background-Bridging-Header.h */,
 			);
 			path = D21Background;
 			sourceTree = "<group>";
@@ -168,6 +176,11 @@
 				TargetAttributes = {
 					77DD3E701A8457CB00C3D299 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					77DD3E891A8457CB00C3D299 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -199,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7764B3D71A8478ED00F2D750 /* fight-torreros-full.mp3 in Resources */,
 				77DD3E801A8457CB00C3D299 /* Main.storyboard in Resources */,
 				77DD3E851A8457CB00C3D299 /* LaunchScreen.xib in Resources */,
 				77DD3E821A8457CB00C3D299 /* Images.xcassets in Resources */,
@@ -219,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DD3E9C1A84757F00C3D299 /* SwiftViewController.swift in Sources */,
 				77DD3E7D1A8457CB00C3D299 /* ViewController.m in Sources */,
 				77DD3E7A1A8457CB00C3D299 /* AppDelegate.m in Sources */,
 				77DD3E771A8457CB00C3D299 /* main.m in Sources */,
@@ -345,9 +360,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = D21Background/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "D21Background/D21Background-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -355,9 +373,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = D21Background/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "D21Background/D21Background-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -414,6 +434,7 @@
 				77DD3E961A8457CB00C3D299 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77DD3E971A8457CB00C3D299 /* Build configuration list for PBXNativeTarget "D21BackgroundTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +443,7 @@
 				77DD3E991A8457CB00C3D299 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
