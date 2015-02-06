@@ -26,6 +26,23 @@
 
 @implementation ViewController
 
+- (void)displayApplicationState {
+    switch ([UIApplication sharedApplication].applicationState) {
+        case UIApplicationStateActive:
+            NSLog(@"UIApplicationStateActive");
+            break;
+        case UIApplicationStateBackground:
+            NSLog(@"UIApplicationStateBackground");
+            break;
+        case UIApplicationStateInactive:
+            NSLog(@"UIApplicationStateInactive");
+            break;
+        default:
+            break;
+    }
+    NSLog(@"timeRemaining: %f", [UIApplication sharedApplication].backgroundTimeRemaining);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
