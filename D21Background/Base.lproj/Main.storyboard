@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6qx-mn-fSk">
                                 <rect key="frame" x="11" y="72" width="573" height="121"/>
                                 <subviews>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZDp-VE-biG">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDp-VE-biG">
                                         <rect key="frame" x="8" y="8" width="51" height="31"/>
                                         <connections>
                                             <action selector="doTimerEnableSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="P07-v1-6kX"/>
@@ -35,7 +35,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C3b-Va-tp5">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3b-Va-tp5">
                                         <rect key="frame" x="8" y="47" width="51" height="31"/>
                                         <connections>
                                             <action selector="doBackgroundEnableSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="fIZ-qR-VR2"/>
@@ -96,7 +96,7 @@
         <!--Swift-->
         <scene sceneID="d3N-IK-P7O">
             <objects>
-                <viewController title="Swift" id="Nhp-5a-HmE" sceneMemberID="viewController">
+                <viewController title="Swift" id="Nhp-5a-HmE" customClass="SwiftViewController" customModule="D21Background" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2kh-oP-FCs"/>
                         <viewControllerLayoutGuide type="bottom" id="qUa-tL-Ko1"/>
@@ -105,6 +105,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-aT-b5I">
+                                <rect key="frame" x="11" y="201" width="573" height="110"/>
+                                <color key="backgroundColor" red="0.036523958735473538" green="1" blue="0.87534461314227274" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wE-gf-ifc">
                                 <rect key="frame" x="11" y="72" width="573" height="121"/>
                                 <subviews>
@@ -135,9 +139,35 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.9989192683" green="1" blue="0.045983177649999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNH-tD-zDF">
+                                <rect key="frame" x="16" y="216" width="51" height="31"/>
+                                <connections>
+                                    <action selector="doAudioSwitch:" destination="Nhp-5a-HmE" eventType="valueChanged" id="D7k-DO-kRD"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moQ-SI-UbV">
+                                <rect key="frame" x="81" y="221" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration/Current location for audio goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtz-C2-H0B">
+                                <rect key="frame" x="16" y="255" width="347" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zqx-hy-VmX">
+                                <rect key="frame" x="11" y="299" width="352" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="myAudioLabel" destination="moQ-SI-UbV" id="8Sa-XW-i7e"/>
+                        <outlet property="myAudioSwitch" destination="CNH-tD-zDF" id="MRs-Fm-KUT"/>
+                        <outlet property="myProgressView" destination="Jtz-C2-H0B" id="Gif-Nz-Cxu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6t-UQ-u4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -171,7 +201,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="4rQ-pU-czb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="4rZ-D4-cdA" style="IBUITableViewCellStyleDefault" id="2bR-qo-n4K">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4rZ-D4-cdA" style="IBUITableViewCellStyleDefault" id="2bR-qo-n4K">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2bR-qo-n4K" id="Jf0-Wc-Lel">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -185,7 +215,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Nhp-5a-HmE" kind="show" id="RSx-bx-5x0"/>
+                                            <segue destination="Nhp-5a-HmE" kind="show" id="hcY-pP-H9E"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

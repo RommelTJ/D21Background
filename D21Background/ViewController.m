@@ -48,6 +48,15 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.myTimerEnableSwitch.on = NO;
     self.myBackgroundEnableSwitch.on = NO;
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+        int count = 0;
+        while (1) {
+            count++;
+            sleep(2);
+            NSLog(@"Thread count = %i", count);
+        }
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,18 +69,29 @@
 - (IBAction)doTimerEnableSwitch:(id)sender {
     UISwitch *mySwitch = sender;
     if (mySwitch.on) {
-        self.myTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(doTimer:) userInfo:nil repeats:YES];
+        NSLog(@"mySwitch is on");
+        self.myTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(doTimer:) userInfo:nil repeats:YES];
     } else {
+        NSLog(@"mySwitch is off");
         [self.myTimer invalidate];
         self.myTimer = nil;
     }
 }
 
 - (IBAction)doBackgroundEnableSwitch:(id)sender {
-    
+    UISwitch *mySwitch = sender;
+    if (mySwitch.on) {
+        self.myBackgroundTaskID = [[UIApplication sharedApplication]beginBackgroundTaskWithExpirationHandler:^{
+            NSLog(@"WE RAN OUT OF TIME!");
+            //abort(); //Crash if we get here. (not necessary because we ran out of time.
+        }];
+        NSLog(@"MyBackgroundTaskID = %lu", self.myBackgroundTaskID);
+    } else {
+        [[UIApplication sharedApplication]endBackgroundTask:self.myBackgroundTaskID];
+    }
 }
 
-- (void)doTimer:(NSTimer *) timer {
+- (void)doTimer:(NSTimer *)timer {
     self.myTimerCount++;
     //By using '_' you are going directly to the value instead of using self.myTimerCount (which is calling a getter).
     self.myTimerCountLabel.text = [NSString stringWithFormat:@"Count = %i", _myTimerCount];
