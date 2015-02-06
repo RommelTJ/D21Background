@@ -7,21 +7,40 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SwiftViewController: UIViewController {
-//myAudioSwitch
-    //myAudioLabel
-    //myProgressView
-    //doAudioSwitch
+
+    var myAudioPlayer: AVAudioPlayer!
+    
     @IBOutlet weak var myAudioSwitch: UISwitch!
     @IBOutlet weak var myAudioLabel: UILabel!
-    @IBOutlet weak var myProgressView: UILabel!
+    @IBOutlet weak var myProgressView: UIProgressView!
+    @IBOutlet weak var myTextView: UITextView!
     
+    @IBAction func doStartDownload(sender: AnyObject) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        let myUrl = NSBundle.mainBundle().URLForResource("fight-torreros-full", withExtension: "mp3")
+        var myError: NSError?
+        myAudioPlayer = AVAudioPlayer(contentsOfURL: myUrl, error: &myError)
+        if let error = myError {
+            UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+        } else { //No error
+            AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: &myError)
+            AVAudioSession.sharedInstance().setActive(true, error: &myError)
+            //TODO Error handling
+        }
+        myAudioSwitch.on = false
+        updateAudioInfo()
+    }
+    
+    func updateAudioInfo() {
+        myAudioLabel.text = "Duration: \(myAudioPlayer.duration), Current: \(myAudioPlayer.currentTime)"
+        myProgressView.progress = Float(myAudioPlayer.currentTime) / Float(myAudioPlayer.duration)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +49,14 @@ class SwiftViewController: UIViewController {
     }
     
     @IBAction func doAudioSwitch(sender: AnyObject) {
+        let mySwitch = sender as UISwitch
+        if mySwitch.on {
+            myAudioPlayer.play()
+            updateAudioInfo()
+        } else {
+            myAudioPlayer.pause()
+            updateAudioInfo()
+        }
     }
 
     /*

@@ -105,6 +105,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Xs-ie-cGE">
+                                <rect key="frame" x="11" y="319" width="573" height="243"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-Yu-P6s">
+                                        <rect key="frame" x="8" y="37" width="550" height="169"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-aT-b5I">
                                 <rect key="frame" x="11" y="201" width="573" height="110"/>
                                 <color key="backgroundColor" red="0.036523958735473538" green="1" blue="0.87534461314227274" alpha="1" colorSpace="calibratedRGB"/>
@@ -160,13 +172,23 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zqx-hy-VmX">
                                 <rect key="frame" x="11" y="299" width="352" height="2"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLS-4M-qfS">
+                                <rect key="frame" x="11" y="319" width="131" height="30"/>
+                                <state key="normal" title="Start the download">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doStartDownload:" destination="Nhp-5a-HmE" eventType="touchUpInside" id="zqZ-8L-BoV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="myAudioLabel" destination="moQ-SI-UbV" id="8Sa-XW-i7e"/>
+                        <outlet property="myAudioLabel" destination="Jtz-C2-H0B" id="oXw-JT-SAD"/>
                         <outlet property="myAudioSwitch" destination="CNH-tD-zDF" id="MRs-Fm-KUT"/>
-                        <outlet property="myProgressView" destination="Jtz-C2-H0B" id="Gif-Nz-Cxu"/>
+                        <outlet property="myProgressView" destination="Zqx-hy-VmX" id="s3z-8h-DJn"/>
+                        <outlet property="myTextView" destination="YwL-Yu-P6s" id="O2K-MV-XOg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6t-UQ-u4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
