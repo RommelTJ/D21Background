@@ -173,6 +173,9 @@
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IwZ-Fd-Jlp">
                                         <rect key="frame" x="8" y="8" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="doTimerEnableSwitch:" destination="Nhp-5a-HmE" eventType="valueChanged" id="MaQ-d5-xX4"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSC-OW-bJj">
                                         <rect key="frame" x="73" y="13" width="44" height="21"/>
@@ -182,15 +185,12 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d1M-Sw-JqK">
                                         <rect key="frame" x="8" y="47" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="doBackgroundEnableSwitch:" destination="Nhp-5a-HmE" eventType="valueChanged" id="aHf-xN-nZk"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Processing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgJ-5q-ekx">
                                         <rect key="frame" x="73" y="52" width="184" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Count = 000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzw-7y-MpZ">
-                                        <rect key="frame" x="8" y="94" width="124" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -234,8 +234,11 @@
                     <connections>
                         <outlet property="myAudioLabel" destination="Jtz-C2-H0B" id="oXw-JT-SAD"/>
                         <outlet property="myAudioSwitch" destination="CNH-tD-zDF" id="MRs-Fm-KUT"/>
+                        <outlet property="myBackgroundEnableSwitch" destination="d1M-Sw-JqK" id="3Mb-18-t3K"/>
                         <outlet property="myProgressView" destination="Zqx-hy-VmX" id="s3z-8h-DJn"/>
                         <outlet property="myTextView" destination="YwL-Yu-P6s" id="O2K-MV-XOg"/>
+                        <outlet property="myTimerCountLabel" destination="iSC-OW-bJj" id="ow2-Dl-yR6"/>
+                        <outlet property="myTimerEnableSwitch" destination="IwZ-Fd-Jlp" id="e6t-CV-Uun"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6t-UQ-u4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
