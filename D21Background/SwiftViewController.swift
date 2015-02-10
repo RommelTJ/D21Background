@@ -12,11 +12,41 @@ import AVFoundation
 class SwiftViewController: UIViewController, NSURLSessionDownloadDelegate {
 
     var myAudioPlayer: AVAudioPlayer!
+    var myTimerCount = 0
+    var myTimer: NSTimer?
     
+    @IBOutlet weak var myTimerCountLabel: UILabel!
+    @IBOutlet weak var myTimerEnableSwitch: UISwitch!
+    @IBOutlet weak var myBackgroundEnableSwitch: UISwitch!
     @IBOutlet weak var myAudioSwitch: UISwitch!
     @IBOutlet weak var myAudioLabel: UILabel!
     @IBOutlet weak var myProgressView: UIProgressView!
     @IBOutlet weak var myTextView: UITextView!
+    
+    @IBAction func doTimerEnableSwitch(sender: AnyObject) {
+        let swtch = sender as UISwitch
+        if swtch.on {
+            myTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target:self, selector:"doTimer:", userInfo:nil, repeats:true)
+        } else {
+            myTimer?.invalidate()
+            myTimer = nil
+        }
+    }
+    
+    var myBackgroundTaskID = UIBackgroundTaskInvalid
+    @IBAction func doBackgroundEnableSwitch(sender: AnyObject) {
+        var swtch = sender as UISwitch
+        if swtch.on {
+            myBackgroundTaskID = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({
+                //Nothing to do
+                NSLog("Here")
+                //abort()
+            })
+        } else {
+            UIApplication.sharedApplication().endBackgroundTask(myBackgroundTaskID)
+        }
+    }
+    
     
     @IBAction func doStartDownload(sender: AnyObject) {
         //FOR TEST ONLY
@@ -30,6 +60,24 @@ class SwiftViewController: UIViewController, NSURLSessionDownloadDelegate {
         let downloadTask = session.downloadTaskWithURL(url!)
         downloadTask.resume()
         myTextView.text = "Starting the download..."
+    }
+    
+    func displayApplicationState() {
+        switch UIApplication.sharedApplication().applicationState {
+        case UIApplicationState.Active:
+            NSLog("UIApplicationState.Active")
+        case UIApplicationState.Background:
+            NSLog("UIApplicationState.Background")
+        case UIApplicationState.Inactive:
+            NSLog("UIApplicationState.Inactive")
+        }
+    }
+    
+    func doTimer(timer: NSTimer!) {
+        myTimerCount++
+        let s = "Timer Count: " + String(myTimerCount)
+        displayApplicationState()
+        NSLog(s)
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
@@ -47,6 +95,20 @@ class SwiftViewController: UIViewController, NSURLSessionDownloadDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        myTimerEnableSwitch.on = false
+        myBackgroundEnableSwitch.on = false
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+            //Simulate doing work
+            var count = 0
+            while true {
+                count++
+                sleep(2)
+                NSLog("backgroundTimeRemaining: %i", UIApplication.sharedApplication().backgroundTimeRemaining)
+                NSLog("count: %i", count)
+            }
+        })
+        
         let myUrl = NSBundle.mainBundle().URLForResource("fight-torreros-full", withExtension: "mp3")
         var myError: NSError?
         myAudioPlayer = AVAudioPlayer(contentsOfURL: myUrl, error: &myError)

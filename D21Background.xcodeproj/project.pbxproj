@@ -11,7 +11,6 @@
 		77DD3E771A8457CB00C3D299 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E761A8457CB00C3D299 /* main.m */; };
 		77DD3E7A1A8457CB00C3D299 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E791A8457CB00C3D299 /* AppDelegate.m */; };
 		77DD3E7D1A8457CB00C3D299 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E7C1A8457CB00C3D299 /* ViewController.m */; };
-		77DD3E801A8457CB00C3D299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77DD3E7E1A8457CB00C3D299 /* Main.storyboard */; };
 		77DD3E821A8457CB00C3D299 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DD3E811A8457CB00C3D299 /* Images.xcassets */; };
 		77DD3E851A8457CB00C3D299 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77DD3E831A8457CB00C3D299 /* LaunchScreen.xib */; };
 		77DD3E911A8457CB00C3D299 /* D21BackgroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DD3E901A8457CB00C3D299 /* D21BackgroundTests.m */; };
@@ -37,7 +36,6 @@
 		77DD3E791A8457CB00C3D299 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		77DD3E7B1A8457CB00C3D299 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		77DD3E7C1A8457CB00C3D299 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		77DD3E7F1A8457CB00C3D299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77DD3E811A8457CB00C3D299 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		77DD3E841A8457CB00C3D299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		77DD3E8A1A8457CB00C3D299 /* D21BackgroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = D21BackgroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +90,6 @@
 				77DD3E7B1A8457CB00C3D299 /* ViewController.h */,
 				77DD3E7C1A8457CB00C3D299 /* ViewController.m */,
 				77DD3E9B1A84757F00C3D299 /* SwiftViewController.swift */,
-				77DD3E7E1A8457CB00C3D299 /* Main.storyboard */,
 				77DD3E811A8457CB00C3D299 /* Images.xcassets */,
 				77DD3E831A8457CB00C3D299 /* LaunchScreen.xib */,
 				77DD3E741A8457CB00C3D299 /* Supporting Files */,
@@ -213,7 +210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7764B3D71A8478ED00F2D750 /* fight-torreros-full.mp3 in Resources */,
-				77DD3E801A8457CB00C3D299 /* Main.storyboard in Resources */,
 				77DD3E851A8457CB00C3D299 /* LaunchScreen.xib in Resources */,
 				77DD3E821A8457CB00C3D299 /* Images.xcassets in Resources */,
 			);
@@ -259,14 +255,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		77DD3E7E1A8457CB00C3D299 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				77DD3E7F1A8457CB00C3D299 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		77DD3E831A8457CB00C3D299 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
