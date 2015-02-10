@@ -74,6 +74,49 @@
                                     <constraint firstItem="ZDp-VE-biG" firstAttribute="top" secondItem="6qx-mn-fSk" secondAttribute="topMargin" id="qGK-Lg-lNp"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxM-Z6-gz3">
+                                <rect key="frame" x="11" y="201" width="573" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHh-tI-WQH">
+                                        <rect key="frame" x="8" y="8" width="121" height="30"/>
+                                        <state key="normal" title="Start/Stop Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doStartStopAudioButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k9O-r9-tgu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.036523958740000001" green="1" blue="0.8753446131" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration/Current location for audio goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmX-4q-Z27">
+                                <rect key="frame" x="16" y="255" width="347" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N1Y-Jl-aI4">
+                                <rect key="frame" x="11" y="319" width="573" height="243"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wdu-V7-Yej">
+                                        <rect key="frame" x="8" y="37" width="550" height="169"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awF-H5-y6z">
+                                <rect key="frame" x="11" y="319" width="131" height="30"/>
+                                <state key="normal" title="Start the download">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doDownloadFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vpb-Uv-jJi"/>
+                                    <action selector="doStartDownload:" destination="Nhp-5a-HmE" eventType="touchUpInside" id="psm-Po-RF3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -84,7 +127,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="myAudioDurationLabel" destination="bmX-4q-Z27" id="jxl-VK-sE0"/>
                         <outlet property="myBackgroundEnableSwitch" destination="C3b-Va-tp5" id="uqD-Gc-xId"/>
+                        <outlet property="myDownloadFileButton" destination="awF-H5-y6z" id="Jpw-yh-hL7"/>
+                        <outlet property="myStartStopButton" destination="ZHh-tI-WQH" id="iV3-8n-MCQ"/>
+                        <outlet property="myTextView" destination="Wdu-V7-Yej" id="pk1-Sf-RyN"/>
                         <outlet property="myTimerCountLabel" destination="7ab-m6-4YU" id="j7b-Ra-xGo"/>
                         <outlet property="myTimerEnableSwitch" destination="ZDp-VE-biG" id="5q1-kb-plG"/>
                     </connections>

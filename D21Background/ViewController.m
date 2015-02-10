@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+@import AVFoundation;
 
-@interface ViewController ()
+@interface ViewController () <NSURLSessionDownloadDelegate>
 
 //These properties allow you to access the state of the switches.
 @property (weak, nonatomic) IBOutlet UISwitch *myTimerEnableSwitch;
@@ -22,9 +23,74 @@
 @property NSTimer *myTimer;
 @property UIBackgroundTaskIdentifier myBackgroundTaskID;
 
+@property (weak, nonatomic) IBOutlet UIButton *myStartStopButton;
+@property (weak, nonatomic) IBOutlet UILabel *myAudioDurationLabel;
+@property AVAudioPlayer *myAudioPlayer;
+
+@property (weak, nonatomic) IBOutlet UIButton *myDownloadFileButton;
+@property (weak, nonatomic) IBOutlet UITextView *myTextView;
+
+
 @end
 
 @implementation ViewController
+
+- (IBAction)doDownloadFile:(id)sender {
+    NSURLSessionConfiguration *sc;
+    NSLog(@"%i", __IPHONE_OS_VERSION_MIN_REQUIRED);
+    NSLog(@"%i", __IPHONE_7_1);
+    NSLog(@"%i", __IPHONE_8_0);
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_8_0
+    sc = [NSURLSessionConfiguration backgroundSessionConfiguration:@"com.rommelrico.session"];
+#else 
+    sc = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.rommelrico.session"];
+#endif
+    
+    sc.sessionSendsLaunchEvents = YES;
+    sc.discretionary = YES;
+    
+    //NSURLSession *session = [NSURLSession sessionWithConfiguration:sc];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sc delegate:self delegateQueue:nil];
+    
+    NSURL *myUrl = [NSURL URLWithString:@"http://www.apple.com"];
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:myUrl];
+    
+    [downloadTask resume];
+    self.myTextView.text = [downloadTask description];
+}
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+    NSLog(@"Session: %@", session);
+    NSLog(@"Location: %@", location);
+    NSLog(@"Download Task: %@", downloadTask);
+    
+    //Read the file into a string
+    NSError *myError = nil;
+    NSString *s = [NSString stringWithContentsOfFile:location.path encoding:NSUTF8StringEncoding error:&myError];
+    
+    //Make sure this is on main thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.myTextView.text = s;
+    });
+}
+
+- (void)updateAudioLabel {
+    self.myAudioDurationLabel.text = [NSString stringWithFormat:@"Duration: %f, Current: %f",
+                                      self.myAudioPlayer.duration, self.myAudioPlayer.currentTime];
+}
+
+- (IBAction)doStartStopAudioButton:(id)sender {
+    if(self.myAudioPlayer.isPlaying) {
+        //Pause audio
+        [self.myAudioPlayer pause];
+        [self updateAudioLabel];
+    } else {
+        //Start audio
+        [self.myAudioPlayer play];
+        [self updateAudioLabel];
+    }
+}
 
 - (void)displayApplicationState {
     switch ([UIApplication sharedApplication].applicationState) {
@@ -57,6 +123,21 @@
             NSLog(@"Thread count = %i", count);
         }
     });
+    
+    //Load in audio file
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"fight-torreros-full" withExtension:@"mp3"];
+    NSError *myError = nil;
+    self.myAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&myError];
+    if(myError) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Audio Error" message:[myError localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    }
+    
+    self.myTextView.text = @"";
+    self.myTextView.editable = NO;
 }
 
 - (void)didReceiveMemoryWarning {
