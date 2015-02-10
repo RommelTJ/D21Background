@@ -270,7 +270,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="4rQ-pU-czb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4rZ-D4-cdA" style="IBUITableViewCellStyleDefault" id="2bR-qo-n4K">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="4rZ-D4-cdA" style="IBUITableViewCellStyleDefault" id="2bR-qo-n4K">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2bR-qo-n4K" id="Jf0-Wc-Lel">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -284,7 +284,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Nhp-5a-HmE" kind="show" id="hcY-pP-H9E"/>
+                                            <segue destination="Nhp-5a-HmE" kind="show" id="uht-Rd-oKV"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
