@@ -107,6 +107,9 @@
             break;
     }
     NSLog(@"timeRemaining: %f", [UIApplication sharedApplication].backgroundTimeRemaining);
+    //Log this to a file to test beginBackgroundTaskWithExpirationHandler
+    NSString *myString = [NSString stringWithFormat:@"Time Remaining: %f", [UIApplication sharedApplication].backgroundTimeRemaining];
+    [self writeToLogFile:myString];
 }
 
 - (void)viewDidLoad {
@@ -165,10 +168,32 @@
         self.myBackgroundTaskID = [[UIApplication sharedApplication]beginBackgroundTaskWithExpirationHandler:^{
             NSLog(@"WE RAN OUT OF TIME!");
             //abort(); //Crash if we get here. (not necessary because we ran out of time.
+            
+            //Log this to a file to test beginBackgroundTaskWithExpirationHandler
+            NSString *myString = @"We ran out of time!!!";
+            [self writeToLogFile:myString];
         }];
         NSLog(@"MyBackgroundTaskID = %lu", self.myBackgroundTaskID);
     } else {
         [[UIApplication sharedApplication]endBackgroundTask:self.myBackgroundTaskID];
+    }
+}
+
+- (void)writeToLogFile:(NSString*)content{
+    content = [NSString stringWithFormat:@"%@\n",content];
+    
+    //get the documents directory:
+    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"data5.txt"];
+    
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:fileName];
+    if (fileHandle){
+        [fileHandle seekToEndOfFile];
+        [fileHandle writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
+        [fileHandle closeFile];
+    }
+    else{
+        [content writeToFile:fileName atomically:NO encoding:NSStringEncodingConversionAllowLossy error:nil];
     }
 }
 
@@ -177,6 +202,11 @@
     //By using '_' you are going directly to the value instead of using self.myTimerCount (which is calling a getter).
     self.myTimerCountLabel.text = [NSString stringWithFormat:@"Count = %i", _myTimerCount];
     NSLog(@"Count = %i", self.myTimerCount); //This is the official way.
+    
+    //Log this to a file to test beginBackgroundTaskWithExpirationHandler
+    NSString *myString = [NSString stringWithFormat:@"Count is: %d", self.myTimerCount];
+    [self writeToLogFile:myString];
+    
     [self displayApplicationState];
 }
 
